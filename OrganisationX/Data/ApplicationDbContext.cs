@@ -12,5 +12,9 @@ namespace OrganisationX.Data
             : base(options)
         {
         }
+        public DbSet<Employees> Employeee { get; set; }
+        public DbSet<Salary> Salaries { get; set; }
+        public DbSet<JobInfo> JobInfos { get; set; }
+        public DbSet<Education> Educations { get; set; }
     }
 }

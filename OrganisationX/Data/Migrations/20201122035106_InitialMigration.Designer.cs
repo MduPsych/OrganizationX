@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrganisationX.Data;
 
 namespace OrganisationX.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201122035106_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,10 +84,6 @@ namespace OrganisationX.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -137,8 +135,6 @@ namespace OrganisationX.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -225,167 +221,6 @@ namespace OrganisationX.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("OrganisationX.Data.Education", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("EducationField")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EducationLevel")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Educations");
-                });
-
-            modelBuilder.Entity("OrganisationX.Data.JobInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Department")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmployeeCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("JobInvolvement")
-                        .HasColumnType("int");
-
-                    b.Property<int>("JobLevel")
-                        .HasColumnType("int");
-
-                    b.Property<string>("JobRole")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("JobSatisfaction")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PerformanceRating")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RelationshipSatisfaction")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StandardHours")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StockOptionLevel")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalWorkingYears")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrainingTimesLastYear")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WorkLifeBalance")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YearsAtCompany")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YearsInCurrentRole")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YearsSinceLastPromotion")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YearsWithCurrManager")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("JobInfos");
-                });
-
-            modelBuilder.Entity("OrganisationX.Data.Salary", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DailyRate")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("HourlyRate")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MonthlyIncome")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MonthlyRate")
-                        .HasColumnType("int");
-
-                    b.Property<string>("OverTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PercentSalaryHike")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Salaries");
-                });
-
-            modelBuilder.Entity("OrganisationX.Data.Employees", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Attrition")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BusinessTravel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DistanceFromHome")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EnvironmentSatisfaction")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MaritialStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NumCompaniesWorked")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Over18")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("Employees");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -435,27 +270,6 @@ namespace OrganisationX.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("OrganisationX.Data.Education", b =>
-                {
-                    b.HasOne("OrganisationX.Data.Employees", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId");
-                });
-
-            modelBuilder.Entity("OrganisationX.Data.JobInfo", b =>
-                {
-                    b.HasOne("OrganisationX.Data.Employees", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId");
-                });
-
-            modelBuilder.Entity("OrganisationX.Data.Salary", b =>
-                {
-                    b.HasOne("OrganisationX.Data.Employees", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId");
                 });
 #pragma warning restore 612, 618
         }
