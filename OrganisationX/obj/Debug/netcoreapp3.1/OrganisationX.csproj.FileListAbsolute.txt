@@ -90,3 +90,10 @@ C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\Org
 C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\OrganisationX.dll
 C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\OrganisationX.pdb
 C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\OrganisationX.genruntimeconfig.cache
+C:\Users\26905647\source\OrganisationX\OrganisationX\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\26905647\source\OrganisationX\OrganisationX\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Create.cshtml.g.cs
+C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Delete.cshtml.g.cs
+C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Details.cshtml.g.cs
+C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Edit.cshtml.g.cs
+C:\Users\26905647\source\OrganisationX\OrganisationX\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs

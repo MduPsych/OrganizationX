@@ -10,6 +10,10 @@ namespace OrganisationX.Repository
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly ApplicationDbContext _db;
+        public EmployeeRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public bool Create(Employees entity)
         {
             _db.Employeee.Add(entity);
@@ -28,10 +32,16 @@ namespace OrganisationX.Repository
             return employees;
         }
 
-        public Employees FindById(int id)
+        public Employees FindById(string id)
         {
             var employees = _db.Employeee.Find(id);
             return employees;
+        }
+
+        public bool isExists(string id)
+        {
+            var exists = _db.Employeee.Any(q => q.Id.Equals(id));
+            return exists;
         }
 
         public bool Save()
